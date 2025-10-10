@@ -16,11 +16,20 @@ type user struct {
 }
 
 func canSendMessage(mToSend messageToSend) bool {
-	// ?
+	if mToSend.sender.name == "" {
+		return false
+	}
+	if mToSend.recipient.name == "" {
+		return false
+	}
+	if mToSend.sender.number == 0 {
+		return false
+	}
+	if mToSend.recipient.number == 0 {
+		return false
+	}
 	return true
 }
-
-// don't touch below this line
 
 func test(mToSend messageToSend) {
 	fmt.Printf(`sending "%s" from %s (%v) to %s (%v)...`,
